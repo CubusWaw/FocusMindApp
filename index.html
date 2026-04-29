@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusMind — Support & Privacy</title>
+  <meta name="description" content="Support and privacy policy for FocusMind, a productivity app for iOS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f6f3;
+      --surface: #ffffff;
+      --surface-2: #f0efe9;
+      --border: rgba(0,0,0,0.09);
+      --border-med: rgba(0,0,0,0.15);
+      --text-primary: #1a1917;
+      --text-secondary: #6b6963;
+      --text-tertiary: #a09d97;
+      --accent: #534AB7;
+      --accent-light: #eeedfe;
+      --accent-text: #3c3489;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --font: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141312;
+        --surface: #1e1d1b;
+        --surface-2: #252320;
+        --border: rgba(255,255,255,0.08);
+        --border-med: rgba(255,255,255,0.14);
+        --text-primary: #f0ede8;
+        --text-secondary: #9c9890;
+        --text-tertiary: #5e5b55;
+        --accent: #7F77DD;
+        --accent-light: #26215c;
+        --accent-text: #afa9ec;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 0.5px solid var(--border-med);
+      border-radius: var(--radius-md);
+      padding: 6px 14px 6px 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .app-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .app-icon svg { width: 20px; height: 20px; }
+
+    .badge-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .badge-cat {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 7px 18px;
+      border: 0.5px solid var(--border-med);
+      border-radius: 999px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      outline: none;
+    }
+
+    .tab:hover { background: var(--surface); color: var(--text-primary); }
+
+    .tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Sections ── */
+    .section { display: none; }
+    .section.visible { display: block; }
+
+    /* ── Typography ── */
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 2rem 0 0.4rem;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .card-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .card-row:last-child { border-bottom: none; }
+
+    .icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-wrap svg {
+      width: 15px;
+      height: 15px;
+      color: var(--text-secondary);
+      stroke: currentColor;
+    }
+
+    .row-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 1px; }
+    .row-value { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+    .row-value.accent { color: var(--accent); }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--accent-light);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 0 0 0.5rem;
+      border-left: 2.5px solid var(--accent);
+    }
+
+    .highlight p {
+      font-size: 14px;
+      color: var(--accent-text);
+      line-height: 1.65;
+    }
+
+    /* ── Tag ── */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      color: var(--text-tertiary);
+      border: 0.5px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer span {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Animations ── */
+    .section.visible {
+      animation: fadeUp 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header { padding: 2.5rem 0 2rem; }
+      .wrapper { padding: 0 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <header>
+      <div class="app-badge">
+        <div class="app-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="7" stroke="white" stroke-width="1.6"/>
+            <circle cx="10" cy="10" r="2.5" fill="white"/>
+            <path d="M10 3V1.5M10 18.5V17M3 10H1.5M18.5 10H17" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="badge-name">FocusMind</div>
+          <div class="badge-cat">Productivity · iOS</div>
+        </div>
+      </div>
+      <h1>Support &amp; Privacy</h1>
+      <p class="hero-sub">Get help with FocusMind and learn how we handle your data — spoiler: it never leaves your device.</p>
+    </header>
+
+    <nav>
+      <button class="tab active" onclick="show('support', this)">App support</button>
+      <button class="tab" onclick="show('privacy', this)">Privacy policy</button>
+    </nav>
+
+    <!-- ── Support ── -->
+    <div id="support" class="section visible">
+      <h2>App support</h2>
+
+      <h3>How do I upgrade to the paid version?</h3>
+      <p>Open FocusMind, go to <strong style="font-weight:500">Settings → Upgrade</strong> and choose the plan that suits you. The purchase is handled securely through the App Store.</p>
+
+      <h3>How do I restore my purchase?</h3>
+      <p>Go to <strong style="font-weight:500">Settings → Restore purchases</strong>. Make sure you're signed in to the same Apple ID you used when you originally purchased. If the problem persists, contact us.</p>
+
+      <h3>I lost my data — can you recover it?</h3>
+      <p>All your data is stored only on your device. We have no access to it and cannot recover it remotely. We recommend enabling iCloud Backup in your iPhone settings so your app data is included in your regular device backups.</p>
+
+      <h3>How do I move my data to a new iPhone?</h3>
+      <p>Use Apple's standard device transfer process (iCloud backup or direct transfer via cable). As long as you restore from a backup that includes FocusMind, all your data will carry over automatically.</p>
+
+      <h3>The app is crashing — what should I do?</h3>
+      <p>Try force-quitting the app and reopening it. If that doesn't help, restart your iPhone. Still crashing? Send us an email with your device model and iOS version and we'll investigate.</p>
+
+      <h3>How do I delete all my data?</h3>
+      <p>Simply delete the app from your iPhone. Since everything is stored locally on your device, uninstalling FocusMind removes all associated data completely.</p>
+
+      <hr class="divider" />
+
+      <h2>Contact us</h2>
+      <div class="card">
+        <div class="card-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4l6 5 6-5M2 4h12v9H2V4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="row-label">Email support</div>
+            <div class="row-value accent">support@focusmind.app</div>
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="6"/>
+              <path d="M8 5v4l2.5 1.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="row-label">Response time</div>
+            <div class="row-value">Within 24–48 hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Privacy ── -->
+    <div id="privacy" class="section">
+      <span class="tag">Last updated: April 2026</span>
+      <h2>Privacy policy</h2>
+
+      <div class="highlight">
+        <p>FocusMind is built with a simple principle: <strong style="font-weight:500">your data belongs to you</strong>. Everything you create stays on your device. We never collect, transmit, or have access to any of your personal information.</p>
+      </div>
+
+      <h3>What data we collect</h3>
+      <p>None. FocusMind does not collect any personal data, usage data, analytics, or crash reports. No information ever leaves your device.</p>
+
+      <h3>Where your data is stored</h3>
+      <p>All data you create in FocusMind — tasks, notes, settings, and any other content — is stored exclusively on your iPhone or iPad using Apple's local storage. We have no servers, no databases, and no access to your content.</p>
+
+      <h3>Third-party services</h3>
+      <p>FocusMind does not use any third-party analytics, advertising, or tracking SDKs. The only external service involved is Apple's App Store, which handles payment processing for the premium version. Apple's own privacy policy governs that transaction.</p>
+
+      <h3>In-app purchases</h3>
+      <p>FocusMind offers a free version and a paid upgrade. All purchases are processed by Apple through the App Store. We do not receive or store your payment information — Apple handles this entirely.</p>
+
+      <h3>Children's privacy</h3>
+      <p>Because we collect no data whatsoever, FocusMind is safe for users of all ages. We do not knowingly collect information from anyone, including children under 13.</p>
+
+      <h3>Changes to this policy</h3>
+      <p>If we ever change this policy, we will update the date at the top of this page. Any future changes will be reflected here before they take effect.</p>
+
+      <hr class="divider" />
+
+      <h2>Questions about privacy</h2>
+      <div class="card">
+        <div class="card-row">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4l6 5 6-5M2 4h12v9H2V4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="row-label">Privacy enquiries</div>
+            <div class="row-value accent">privacy@focusmind.app</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span>FocusMind · All rights reserved</span>
+      <span>© 2026</span>
+    </footer>
+
+  </div>
+
+  <script>
+    function show(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('visible');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
