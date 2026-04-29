@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusMind — Support & Privacy</title>
+  <meta name="description" content="Get help with FocusMind, read the FAQ, and learn how we protect your privacy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #f7f6f3;
+      --surface:      #ffffff;
+      --surface-2:    #f0efe9;
+      --border:       rgba(0,0,0,0.08);
+      --border-med:   rgba(0,0,0,0.14);
+      --text-1:       #1a1917;
+      --text-2:       #6b6963;
+      --text-3:       #a09d97;
+      --accent:       #534AB7;
+      --accent-soft:  #eeedfe;
+      --accent-text:  #3c3489;
+      --radius-sm:    8px;
+      --radius-md:    12px;
+      --radius-lg:    16px;
+      --font:         'DM Sans', sans-serif;
+      --mono:         'DM Mono', monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:          #131211;
+        --surface:     #1c1b19;
+        --surface-2:   #242320;
+        --border:      rgba(255,255,255,0.07);
+        --border-med:  rgba(255,255,255,0.13);
+        --text-1:      #edeae4;
+        --text-2:      #9c9890;
+        --text-3:      #5c5955;
+        --accent:      #7F77DD;
+        --accent-soft: #1e1b3a;
+        --accent-text: #afa9ec;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-1);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 0.5px solid var(--border-med);
+      border-radius: var(--radius-md);
+      padding: 6px 14px 6px 6px;
+      margin-bottom: 1.75rem;
+    }
+
+    .app-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .app-icon svg { width: 22px; height: 22px; }
+
+    .badge-name { font-size: 14px; font-weight: 500; color: var(--text-1); line-height: 1.2; }
+    .badge-cat  { font-size: 11px; color: var(--text-3); line-height: 1.4; }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── App Store button ── */
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text-1);
+      color: var(--bg);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .store-btn:hover { opacity: 0.8; }
+    .store-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .store-btn-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .store-btn-small { font-size: 10px; font-weight: 400; opacity: 0.7; }
+    .store-btn-big   { font-size: 14px; font-weight: 500; }
+
+    /* ── Nav ── */
+    nav { display: flex; gap: 6px; margin-bottom: 2.5rem; flex-wrap: wrap; }
+
+    .tab {
+      padding: 8px 20px;
+      border: 0.5px solid var(--border-med);
+      border-radius: 999px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-2);
+      transition: all 0.15s ease;
+      outline: none;
+    }
+
+    .tab:hover { background: var(--surface); color: var(--text-1); }
+
+    .tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Sections ── */
+    .section { display: none; }
+
+    .section.visible {
+      display: block;
+      animation: fadeUp 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Labels & headings ── */
+    .section-label {
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FAQ ── */
+    .faq-group { margin-bottom: 2.5rem; }
+
+    .faq-group-title {
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .faq-item { border-bottom: 0.5px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-1);
+      text-align: left;
+      padding: 1rem 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      outline: none;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-chevron {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--text-3);
+      transition: transform 0.2s ease;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-item.open .faq-q { color: var(--accent); }
+
+    .faq-a {
+      display: none;
+      padding: 0 0 1rem;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-2);
+    }
+
+    .faq-item.open .faq-a { display: block; }
+    .faq-a strong { font-weight: 500; color: var(--text-1); }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+
+    .c-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .c-icon svg { width: 16px; height: 16px; stroke: var(--text-2); fill: none; stroke-width: 1.5; }
+
+    .c-label { font-size: 12px; color: var(--text-3); margin-bottom: 2px; }
+    .c-value { font-size: 14px; font-weight: 500; color: var(--text-1); }
+    .c-value.link { color: var(--accent); }
+
+    hr { border: none; border-top: 0.5px solid var(--border); margin: 2.5rem 0; }
+
+    /* ── Privacy ── */
+    .policy-date {
+      display: inline-block;
+      font-size: 11px;
+      font-family: var(--mono);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      color: var(--text-3);
+      border: 0.5px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 2.5px solid var(--accent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .highlight p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--accent-text);
+    }
+
+    .policy-block { margin-bottom: 2rem; }
+
+    .policy-block h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--text-1);
+    }
+
+    .policy-block p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-2);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 5rem;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer span { font-size: 12px; color: var(--text-3); }
+
+    @media (max-width: 500px) {
+      .hero { padding: 2.5rem 0 2rem; }
+      .wrapper { padding: 0 1.25rem 4rem; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="app-badge">
+      <div class="app-icon">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7.5" stroke="white" stroke-width="1.6"/>
+          <circle cx="11" cy="11" r="2.75" fill="white"/>
+          <path d="M11 3.5V2M11 20V18.5M3.5 11H2M20 11H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="badge-name">FocusMind</div>
+        <div class="badge-cat">Productivity · iOS</div>
+      </div>
+    </div>
+
+    <h1>Support &amp; Privacy</h1>
+    <p class="hero-sub">Everything you need — answers to common questions, how to get in touch, and a plain-English privacy policy.</p>
+
+    <a href="https://apps.apple.com/app/id0000000000" class="store-btn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5C13.73 2.67 14.94 2.04 15.94 2c.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div class="store-btn-text">
+        <span class="store-btn-small">Download on the</span>
+        <span class="store-btn-big">App Store</span>
+      </div>
+    </a>
+  </header>
+
+  <!-- Nav -->
+  <nav>
+    <button class="tab active" onclick="show('support', this)">App support</button>
+    <button class="tab" onclick="show('privacy', this)">Privacy policy</button>
+  </nav>
+
+  <!-- ══ SUPPORT ══ -->
+  <div id="support" class="section visible">
+
+    <p class="section-label">FAQ</p>
+    <h2>Frequently asked questions</h2>
+
+    <!-- Getting started -->
+    <div class="faq-group">
+      <div class="faq-group-title">Getting started</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Do I need to create an account?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">No. FocusMind requires no account, no sign-in, and no email address. Just download and start using it straight away. Everything is kept privately on your device.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Is FocusMind free to use?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Yes — FocusMind is free to download with a solid set of core features. A one-time upgrade unlocks the full premium experience. There are no recurring subscriptions.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I upgrade to the paid version?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Open FocusMind, go to <strong>Settings → Upgrade</strong> and follow the steps. The purchase is processed securely by Apple through the App Store — we never see your payment details.</div>
+      </div>
+    </div>
+
+    <!-- Purchases -->
+    <div class="faq-group">
+      <div class="faq-group-title">Purchases &amp; billing</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I restore my purchase on a new device?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Go to <strong>Settings → Restore purchases</strong> inside the app. Make sure you're signed in with the same Apple ID used for the original purchase. Restoring is always free and instant.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          I was charged but the upgrade isn't showing — what do I do?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">First try <strong>Settings → Restore purchases</strong>. If that doesn't work, force-quit the app and reopen it. Still not resolved? Email us and include the Apple Order ID from your purchase confirmation — we'll sort it out.</div>
+      </div>
+    </div>
+
+    <!-- Your data -->
+    <div class="faq-group">
+      <div class="faq-group-title">Your data</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Where is my data stored?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Everything is stored locally on your iPhone or iPad. Nothing is ever uploaded to a server or the cloud. Your data is completely private and only accessible from your device.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          I lost my data — can you recover it?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Because we never receive your data, we have no way to recover it remotely. To protect yourself, make sure <strong>iCloud Backup</strong> is enabled in your iPhone settings — this automatically includes your app data in your daily device backup.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I transfer my data to a new iPhone?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Use Apple's <strong>Quick Start</strong> direct transfer or restore from an iCloud backup when setting up your new device. As long as your backup includes FocusMind, all your data will carry over automatically — no extra steps needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I permanently delete all my data?
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Simply delete FocusMind from your iPhone. Since everything is stored locally on your device, uninstalling the app removes all associated data completely and permanently. There is nothing stored on our end to delete.</div>
+      </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="faq-group">
+      <div class="faq-group-title">Troubleshooting</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          The app is crashing or behaving unexpectedly
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Try these steps in order: (1) force-quit the app and reopen it, (2) restart your iPhone, (3) check the App Store for an available update. If the problem continues, email us with your device model and iOS version and we'll investigate.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          The app isn't loading after an iOS update
+          <svg class="faq-chevron" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">Occasionally a major iOS update requires a fresh app version to match. Check the App Store for an update to FocusMind. If no update is available yet, delete and reinstall the app — your data will be preserved as long as you restore from an iCloud backup.</div>
+      </div>
+    </div>
+
+    <hr />
+
+    <p class="section-label">Contact</p>
+    <h2>Get in touch</h2>
+    <p style="font-size:15px; color:var(--text-2); line-height:1.7; margin-bottom:1.25rem;">Can't find the answer you need? We're happy to help — just drop us an email and we'll get back to you.</p>
+
+    <div class="contact-card">
+      <div class="contact-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 16 16"><path d="M2 4l6 5 6-5M2 4h12v9H2V4z"/></svg>
+        </div>
+        <div>
+          <div class="c-label">Email support</div>
+          <div class="c-value link">support@focusmind.app</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4l2.5 1.5"/></svg>
+        </div>
+        <div>
+          <div class="c-label">Response time</div>
+          <div class="c-value">Within 24–48 hours</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ PRIVACY ══ -->
+  <div id="privacy" class="section">
+
+    <span class="policy-date">Last updated: April 2026</span>
+    <p class="section-label">Privacy policy</p>
+    <h2>How we handle your data</h2>
+
+    <div class="highlight">
+      <p><strong style="font-weight:500">The short version:</strong> FocusMind collects absolutely nothing. No personal data, no analytics, no tracking of any kind. Everything you create stays on your device and is only ever accessible by you.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>What data we collect</h3>
+      <p>None. FocusMind does not collect, transmit, or store any personal data, usage statistics, analytics, or crash reports. No information of any kind is ever sent from your device to us or to any third party.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>Where your data lives</h3>
+      <p>All content you create in FocusMind — your tasks, notes, settings, and anything else — is stored exclusively on your iPhone or iPad using Apple's local storage. We have no servers, no databases, and no access to your content whatsoever.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>Third-party SDKs and services</h3>
+      <p>FocusMind contains no third-party analytics, advertising, or tracking code. The only external service involved in your use of FocusMind is Apple's App Store, which processes payments for the premium upgrade. Apple's own privacy policy governs that transaction — we never receive or see your payment information.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>In-app purchases</h3>
+      <p>FocusMind offers a free version and a one-time paid upgrade, processed entirely by Apple via StoreKit. We receive confirmation that a purchase was made so we can unlock your features, but we never receive your name, billing address, card details, or any other payment information.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>Children's privacy</h3>
+      <p>Because we collect no data from anyone, FocusMind is safe for users of all ages, including children under 13. There is nothing to collect, share, or misuse.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>Your rights</h3>
+      <p>Since we hold no personal data about you, there is nothing for us to provide, correct, or delete on our end. If you want to remove all your data, simply delete the app from your device — that's all it takes.</p>
+    </div>
+
+    <div class="policy-block">
+      <h3>Changes to this policy</h3>
+      <p>If we ever update this policy, the date at the top of this page will change. We will not introduce any form of data collection without clearly communicating it here first.</p>
+    </div>
+
+    <hr />
+
+    <p class="section-label">Contact</p>
+    <h2>Privacy questions</h2>
+    <p style="font-size:15px; color:var(--text-2); line-height:1.7; margin-bottom:1.25rem;">Have a question about this policy? Reach out and we'll respond promptly.</p>
+
+    <div class="contact-card">
+      <div class="contact-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 16 16"><path d="M2 4l6 5 6-5M2 4h12v9H2V4z"/></svg>
+        </div>
+        <div>
+          <div class="c-label">Privacy enquiries</div>
+          <div class="c-value link">privacy@focusmind.app</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>FocusMind · All rights reserved</span>
+    <span>© 2026</span>
+  </footer>
+
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('visible');
+    btn.classList.add('active');
+  }
+
+  function toggle(btn) {
+    btn.closest('.faq-item').classList.toggle('open');
+  }
+</script>
+</body>
+</html>
